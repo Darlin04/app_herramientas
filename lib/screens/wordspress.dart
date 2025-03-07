@@ -32,7 +32,6 @@ class _NewsScreenState extends State<NewsScreen> {
   final String logoUrl = 'assets/logoweb.png';
   final String apiUrl = 'https://www.marketinghoy.net/wp-json/wp/v2/posts?per_page=3';
 
-  // Función para obtener las noticias
   Future<void> fetchNews() async {
     setState(() {
       isLoading = true;
@@ -61,7 +60,7 @@ class _NewsScreenState extends State<NewsScreen> {
     }
   }
 
-  // Función para abrir enlaces
+  
   Future<void> _launchUrl(String url) async {
     final Uri uri = Uri.parse(url);
     if (await canLaunchUrl(uri)) {
@@ -74,7 +73,7 @@ class _NewsScreenState extends State<NewsScreen> {
   @override
   void initState() {
     super.initState();
-    fetchNews(); // Carga las noticias al iniciar
+    fetchNews();
   }
 
   @override
@@ -90,7 +89,7 @@ class _NewsScreenState extends State<NewsScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              // Logo de Marketing Hoy
+              
               Image.asset(
                 logoUrl,
                 height: 80,
@@ -99,13 +98,13 @@ class _NewsScreenState extends State<NewsScreen> {
                 },
               ),
               SizedBox(height: 20),
-              // Título de la sección
+             
               Text(
                 'Últimas Noticias',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 10),
-              // Contenido dinámico
+              
               isLoading
                   ? Center(child: CircularProgressIndicator())
                   : errorMessage.isNotEmpty
@@ -128,7 +127,7 @@ class _NewsScreenState extends State<NewsScreen> {
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
-                                        // Titular
+                                        
                                         Text(
                                           post['title']['rendered'].replaceAll(RegExp(r'<[^>]*>'), ''),
                                           style: TextStyle(
@@ -137,7 +136,7 @@ class _NewsScreenState extends State<NewsScreen> {
                                           ),
                                         ),
                                         SizedBox(height: 8),
-                                        // Resumen
+                                        
                                         Text(
                                           post['excerpt']['rendered']
                                               .replaceAll(RegExp(r'<[^>]+>'), '')
@@ -147,7 +146,7 @@ class _NewsScreenState extends State<NewsScreen> {
                                           style: TextStyle(fontSize: 14),
                                         ),
                                         SizedBox(height: 10),
-                                        // Botón "Visitar"
+                                        
                                         Align(
                                           alignment: Alignment.bottomRight,
                                           child: ElevatedButton(
