@@ -21,12 +21,12 @@ class WeatherScreen extends StatefulWidget {
 }
 
 class _WeatherScreenState extends State<WeatherScreen> {
-  String city = 'Santo Domingo'; // Ciudad por defecto
+  String city = 'Santo Domingo'; 
   Map<String, dynamic>? weatherData;
   String errorMessage = '';
-  final String apiKey = 'a3f94f72e38f0100d2a3135077d7ceff'; // Reemplaza con tu clave API
+  final String apiKey = 'a3f94f72e38f0100d2a3135077d7ceff'; 
 
-  // Función para obtener el clima
+ 
   Future<void> getWeather() async {
     final url =
         'http://api.openweathermap.org/data/2.5/weather?q=$city,DO&appid=$apiKey&units=metric&lang=es';
@@ -55,7 +55,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
   @override
   void initState() {
     super.initState();
-    getWeather(); // Carga el clima al iniciar, como ionViewDidEnter
+    getWeather(); 
   }
 
   @override
@@ -96,9 +96,9 @@ class _WeatherScreenState extends State<WeatherScreen> {
                             floatingLabelBehavior: FloatingLabelBehavior.always,
                           ),
                           onChanged: (value) {
-                            city = value; // Actualiza la ciudad
+                            city = value; 
                           },
-                          controller: TextEditingController(text: city), // Valor inicial
+                          controller: TextEditingController(text: city), 
                         ),
                         SizedBox(height: 16),
                         SizedBox(
@@ -106,7 +106,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                           child: ElevatedButton(
                             onPressed: getWeather,
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.blue, // Simula Ionic button
+                              backgroundColor: Colors.blue, 
                             ),
                             child: Text('Actualizar Clima'),
                           ),
